@@ -10,10 +10,16 @@ const ScrollIndicator = () => {
   return (
     <motion.div 
       style={{ opacity }}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2"
     >
-      <span className="text-[10px] uppercase tracking-widest text-gray-500">Scroll</span>
-      <div className="w-[1px] h-8 bg-gradient-to-b from-gray-500 to-transparent" />
+      <motion.div 
+        animate={{ opacity: [1, 0.3, 1] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] uppercase tracking-widest text-gray-500">Scroll</span>
+        <div className="w-[1px] h-8 bg-gradient-to-b from-gray-500 to-transparent" />
+      </motion.div>
     </motion.div>
   );
 };
