@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ExperiencePage() {
   const { experience } = cleanContent;
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   // Default to first item if nothing hovered? Or empty? User said "make the bullet points appear", implying hidden by default.
   // But usually on mobile or default state checking the reference, empty is fine or first item.
@@ -24,7 +25,8 @@ export default function ExperiencePage() {
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group cursor-default"
+              onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+              className="group cursor-pointer"
             >
               <div className="flex flex-col mb-1">
                 <h3 className={`text-base font-medium transition-colors duration-300 ${hoveredIndex === index ? "text-gray-400" : "text-[#1a1a1a]"}`}>
@@ -33,6 +35,27 @@ export default function ExperiencePage() {
                 <span className="text-sm text-gray-500 font-normal">{item.title}</span>
               </div>
               <span className="text-xs text-gray-400 font-mono block mt-1">{item.date}</span>
+
+              {/* Mobile Accordion Details */}
+              <AnimatePresence>
+                {expandedIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="md:hidden overflow-hidden"
+                  >
+                     <ul className="space-y-3 pt-4 pb-2 mt-2 border-t border-gray-100">
+                       {item.details.map((detail, i) => (
+                         <li key={i} className="text-sm text-gray-500 leading-relaxed list-none">
+                           {detail}
+                         </li>
+                       ))}
+                     </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>

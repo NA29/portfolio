@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function SelectedWork() {
   const { projects } = cleanContent;
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
   return (
     <section id="selected-work" className="w-full max-w-6xl mx-auto px-6 pb-32">
@@ -33,7 +34,8 @@ export default function SelectedWork() {
                         transition={{ delay: index * 0.1 }}
                         onMouseEnter={() => setHoveredProject(index)}
                         onMouseLeave={() => setHoveredProject(null)}
-                        className="group relative cursor-default py-2 transition-colors" 
+                        onClick={() => setExpandedProject(expandedProject === index ? null : index)}
+                        className="group relative cursor-pointer py-2 transition-colors" 
                     >
                         <div className="flex flex-col mb-1">
                             <h3 className={`text-xl font-medium transition-colors duration-300 ${hoveredProject === index ? "text-gray-400" : "text-[#1a1a1a]"}`}>
@@ -48,6 +50,27 @@ export default function SelectedWork() {
                         <span className="text-xs text-gray-300 font-mono block mt-1">
                             {project.date}
                         </span>
+
+                        {/* Mobile Accordion Details */}
+                        <AnimatePresence>
+                          {expandedProject === index && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              className="md:hidden overflow-hidden"
+                            >
+                               <ul className="space-y-3 pt-4 pb-2 mt-2 border-t border-gray-100">
+                                 {project.description.map((desc, i) => (
+                                   <li key={i} className="text-sm text-gray-500 leading-relaxed list-none">
+                                     {desc}
+                                   </li>
+                                 ))}
+                               </ul>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                     </motion.div>
                 ))}
              </div>
