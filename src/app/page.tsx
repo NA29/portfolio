@@ -41,9 +41,7 @@ export default function Home() {
             transition={{ delay: 0.8 }}
             className="mt-4 text-xs md:text-sm text-gray-500 font-normal"
             >
-            Software Engineer
-            <span className="mx-2 text-gray-300">|</span>
-            Full Stack
+            Software @ McGill University
             </motion.p>
         </div>
       </section>
