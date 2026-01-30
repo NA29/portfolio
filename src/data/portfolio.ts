@@ -31,7 +31,7 @@ export const cleanContent = {
   experience: [
     {
       title: "Software Developer Intern",
-      company: "Intact Financial Corp., Montreal",
+      company: "Intact Financial Corp.",
       date: "Jan 2026 – May 2026",
       details: [
         "Full-Stack - Group Benefits and Travel",
@@ -40,7 +40,7 @@ export const cleanContent = {
     },
     {
       title: "Software Developer",
-      company: "Optim-Structure (Remote), Montreal",
+      company: "Optim-Structure",
       date: "Oct 2024 – Present",
       details: [
         "Designed and developed a React Native mobile app to streamline inspectors’ and engineers’ tasks.",
@@ -50,7 +50,7 @@ export const cleanContent = {
     },
     {
       title: "Data Engineer Intern",
-      company: "Transports Canada, Montreal",
+      company: "Transports Canada",
       date: "May 2025 – Aug 2025",
       details: [
         "Collaborated with an 8-member Data Visualization team to migrate 30+ SAP reports to Power BI.",
@@ -60,7 +60,7 @@ export const cleanContent = {
     },
     {
       title: "Undergraduate Researcher",
-      company: "McGill University, Montreal",
+      company: "McGill University",
       date: "May 2024 – Aug 2024",
       details: [
         "Reimagined YouTube’s UI to promote healthier usage and reduce negative engagement patterns.",
@@ -71,7 +71,7 @@ export const cleanContent = {
     },
     {
       title: "Software Developer",
-      company: "McGill Robotics (UAV), Montreal",
+      company: "McGill Robotics (UAV)",
       date: "Oct 2023 – May 2024",
       details: [
         "Worked on the computer vision team to ensure reliable data handling and processing from camera sensors.",

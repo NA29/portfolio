@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: cleanContent.global.title,
   description: "Portfolio of Nathan Audegond - Software Engineer",
+  icons: {
+    icon: "/grimer.png",
+  },
 };
 
 export default function RootLayout({
